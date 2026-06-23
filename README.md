@@ -332,3 +332,75 @@ vendor/         # gitignored; pinned clone of google-deepmind/science-skills
 ## License
 
 Apache-2.0.
+
+
+# Using OpenRouter
+
+This guide explains how to run Co-Scientist with OpenRouter.
+
+## 1. Create an OpenRouter account and API key
+
+1. Go to [OpenRouter](https://openrouter.ai/).
+2. Create an account or sign in.
+3. Create an API key from your OpenRouter settings.
+4. Keep this key private. Do not commit it to GitHub or paste it into `co-scientist.toml`.
+
+## 2. Create your local configuration file
+
+From the repository root, copy the default configuration:
+
+```bash
+cp config/default.toml co-scientist.toml
+```
+
+`co-scientist.toml` is your local override file and should not be committed to GitHub.
+
+## 3. Configure OpenRouter models
+
+Open `co-scientist.toml` and set the provider:
+
+```toml
+[llm]
+provider = "openrouter"
+```
+
+Then update the `[models]` section:
+
+```toml
+[models]
+parse_goal          = "openrouter/free"
+generation          = "openrouter/free"
+reflection          = "openrouter/free"
+evolution           = "openrouter/free"
+ranking_pairwise    = "openrouter/free"
+ranking_debate      = "openrouter/free"
+ranking_priority    = "openrouter/free"
+metareview_feedback = "openrouter/free"
+metareview_final    = "openrouter/free"
+classifier          = "openrouter/free"
+judge               = "openrouter/free"
+```
+
+All model entries must be overridden. 
+
+## 4. Set your API key
+
+In your terminal, run:
+
+```bash
+export OPENROUTER_API_KEY="paste-your-key-here"
+```
+
+Replace `paste-your-key-here` with your OpenRouter API key.
+
+This environment variable only lasts for the current terminal session. You will need to run it again after opening a new terminal.
+
+## 5. Verify your key is not tracked by Git
+
+Run:
+
+```bash
+git status
+```
+
+Make sure your API key is not shown anywhere. Never add it to Git, GitHub, or a shared configuration file.
