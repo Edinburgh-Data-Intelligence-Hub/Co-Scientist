@@ -407,10 +407,6 @@ Make sure your API key is not shown anywhere. Never add it to Git, GitHub, or a 
 
 ## 6. Configure the OpenAI-compatible endpoint
 
-Open co-scientist.toml and add or update the following sections.
-
-Replace https://YOUR-ENDPOINT/v1 with your provider’s base URL, and replace YOUR-MODEL-ID with a model ID available from that endpoint.
-
 Open `co-scientist.toml` and set the provider:
 
 ```toml
