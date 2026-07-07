@@ -404,3 +404,46 @@ git status
 ```
 
 Make sure your API key is not shown anywhere. Never add it to Git, GitHub, or a shared configuration file.
+
+## 6. Configure the OpenAI-compatible endpoint
+
+Open `co-scientist.toml` and set the provider:
+
+```toml
+[llm]
+provider = "openai_compatible"
+```
+
+Then,
+```toml
+[llm.openai]
+base_url = "https://api.openai.com/v1"
+
+[models]
+parse_goal          = "gpt-5.4-mini"
+generation          = "gpt-5.4-mini"
+reflection          = "gpt-5.4-mini"
+evolution           = "gpt-5.4-mini"
+ranking_pairwise    = "gpt-5.4-mini"
+ranking_debate      = "gpt-5.4-mini"
+ranking_priority    = "gpt-5.4-mini"
+metareview_feedback = "gpt-5.4-mini"
+metareview_final    = "gpt-5.4-mini"
+classifier          = "gpt-5.4-mini"
+judge               = "gpt-5.4-mini"
+```
+
+Obtain an API key
+
+1. Visit **https://elm.edina.ac.uk/elm/**
+2. Click **Request an API key**.
+3. Complete and submit the request form.
+4. Once your request is approved, you will receive an API key.
+
+In your terminal, run:
+
+```bash
+export OPENROUTER_API_KEY="paste-your-key-here"
+```
+
+Keep your API key private. Do **not** commit it to GitHub or include it in `co-scientist.toml`.
